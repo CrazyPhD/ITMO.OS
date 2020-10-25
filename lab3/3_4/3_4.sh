@@ -6,4 +6,5 @@
 
 renice +10 -p $pid0
 
-at now + 1 minute <<< "kill ${pid0} ; kill ${pid1} ; kill ${pid2}"
+at now + 1 minute <<< "kill ${pid2}"
+at now + 2 minute <<< "kill ${pid0} ; kill ${pid1}"
