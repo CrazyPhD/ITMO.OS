@@ -51,6 +51,11 @@ if [[ ! -f $TRASHLOG ]]; then
 	exit 1
 fi
 
+if [[ -z $(grep "$1" $TRASHLOG) ]]; then
+	echo "File $1 does not exist."
+	exit 1
+fi
+
 for tr in $(grep "$1" $TRASHLOG | awk '{print $NF}'); do
 	FN=$(grep $tr $TRASHLOG | awk '{$NF=""; print $0}')
 	FN=$(echo "$FN" | sed 's/ *$//')
